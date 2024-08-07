@@ -1,7 +1,7 @@
 #variables
-#information:
-#  environment: default-sever (new)
-#  current-mask: matthew-default
-spring:
-  profiles:
-    active: dev
+information:
+  environment: default-sever (new)
+  current-mask: matthew-default
+#spring:
+#  profiles:
+#    active: dev
