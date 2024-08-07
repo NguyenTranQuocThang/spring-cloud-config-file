@@ -2,4 +2,6 @@
 information:
   environment: default-sever (new)
   current-mask: matthew-default
-
+spring:
+  profiles:
+    active: dev
