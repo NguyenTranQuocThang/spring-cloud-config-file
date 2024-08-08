@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: get_route
+          uri: https://httpbin.org:80
+          predicates:
+            - Path=/get
+        - id: auth_service_route
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+        - id: eff_service_route
+          uri: lb://eff-service
+          predicates:
+            - Path=/eff/**
