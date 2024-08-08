@@ -1,10 +1,6 @@
 spring:
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
       routes:
         - id: get_route
           uri: https://httpbin.org:80
@@ -13,7 +9,7 @@ spring:
         - id: auth_service_route
           uri: lb://auth-service
           predicates:
-            - Path=/auth/**
+            - Path=/test-dev/**
         - id: eff_service_route
           uri: lb://eff-service
           predicates:
