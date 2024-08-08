@@ -11,7 +11,7 @@ spring:
           predicates:
             - Path=/user-default/**
           filters:
-            - RewritePath=/user/(?<segment>.*), /$\{segment}
+            - RewritePath=/user-default/(?<segment>.*), /$\{segment}
         - id: eff_service_route
           uri: lb://eff-service
           predicates:
