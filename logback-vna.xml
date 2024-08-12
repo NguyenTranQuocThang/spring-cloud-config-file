@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+
+  <!-- property -->
+  <property name="LOGS" value="./logs" />
+  <springProperty name = "APP_NAME" source= "spring.application.name"/>
+
+  <appender name="Console"
+    class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <pattern>%d{ISO8601} %-5level [%thread] %logger{0} - %msg%n%ex</pattern>
+    </layout>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="Console" />
+    <appender-ref ref="RollingFile" />
+  </root>
+
+  <appender name="RollingFile"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOGS}/${APP_NAME}.log</file>
+    <encoder
+      class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>%d{ISO8601} %-5level [%thread] %logger{0} - %msg%n%ex</pattern>
+    </encoder>
+
+    <rollingPolicy
+      class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- rollover daily and when the file reaches 10 MegaBytes -->
+      <fileNamePattern>${LOGS}/archived/${APP_NAME}-%d{yyyy-MM-dd}.%i.log
+      </fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <maxFileSize>200KB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+  </appender>
+
+  <logger name="org.springframework.web" level="DEBUG" />
+
+</configuration>
