@@ -13,12 +13,12 @@
     </layout>
   </appender>
 
-<!--  <springProfile name="default | dev">-->
-    <root level="INFO">
-      <appender-ref ref="Console" />
-      <appender-ref ref="RollingFile" />
-    </root>
-<!--  </springProfile>-->
+  <!--  <springProfile name="default | dev">-->
+  <root level="INFO">
+    <appender-ref ref="Console" />
+    <appender-ref ref="RollingFile" />
+  </root>
+  <!--  </springProfile>-->
 
   <appender name="RollingFile"
     class="ch.qos.logback.core.rolling.RollingFileAppender">
